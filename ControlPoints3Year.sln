@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDV_CatFramework", "Libiry\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDV_CatApplication", "MDV_CatApplication\MDV_CatApplication.csproj", "{9AA265B0-C5ED-417D-A0DA-194D2083E0EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectBoxingUnboxing", "ObjectBoxingUnboxing\ObjectBoxingUnboxing.csproj", "{AE34B4CF-E755-44E3-AB06-1FD4021B6E7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolymorphicTypeHierarchies", "PolymorphicTypeHierarchies\PolymorphicTypeHierarchies.csproj", "{688660BC-BCA6-4807-AED5-1C23D501B112}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{9AA265B0-C5ED-417D-A0DA-194D2083E0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AA265B0-C5ED-417D-A0DA-194D2083E0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AA265B0-C5ED-417D-A0DA-194D2083E0EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE34B4CF-E755-44E3-AB06-1FD4021B6E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE34B4CF-E755-44E3-AB06-1FD4021B6E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE34B4CF-E755-44E3-AB06-1FD4021B6E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE34B4CF-E755-44E3-AB06-1FD4021B6E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688660BC-BCA6-4807-AED5-1C23D501B112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688660BC-BCA6-4807-AED5-1C23D501B112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688660BC-BCA6-4807-AED5-1C23D501B112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688660BC-BCA6-4807-AED5-1C23D501B112}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

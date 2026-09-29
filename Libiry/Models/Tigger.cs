@@ -11,19 +11,20 @@ namespace MDV_CatFramework.Models
     public class Tigger : Cat
     {
         private double _weight;
-        public Tigger(double weight, int fluffiness)
+        public Tigger(double weight, int fluffiness = 50)
         {
-            if (weight >= 75 && weight <= 140)
+            if (weight < 75.0 || weight > 140.0)
             {
                 throw new CatException($"Unable to create a tiger with weight: {weight}");
             }
-            if (fluffiness >= 0 && fluffiness <= 100)
+            if (fluffiness < 0 || fluffiness > 100)
             {
                 throw new CatException($"Unable to create a tiger with fluffiness: {fluffiness}");
             }
-            _fluffiness = fluffiness;
             _weight = weight;
+            _fluffiness = fluffiness;
         }
+
         public Tigger()
         {
             _weight = 50;

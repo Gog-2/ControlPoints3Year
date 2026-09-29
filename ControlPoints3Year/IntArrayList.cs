@@ -11,6 +11,11 @@
         {
             get { return _size; }
         }
+        public int this[int index]
+        {
+            get => _array[index];
+            set => _array[index] = value;
+        }
 
         public int Capacity 
         {
@@ -74,24 +79,28 @@
 
         public void PopBack()
         {
-            _array[_size - 1] = 0;
+            if (_size == 0)
+            {
+                return;
+            }
+
             _size--;
+            _array[_size] = 0;
         }
 
         public bool TryInsert(int index, int value)
         {
 
-            if (index <= 0 || index >= _size)
+            if (index < 0 || index > _size)
             {
                 return false;
             }
 
-            _array[index] = value;
+            EnsureCapacity();
 
-            if (index == _size)
-            {
-                _size++;
-            }
+            Array.Copy(_array, index, _array, index + 1, _size - index);
+            _array[index] = value;
+            _size++;
 
             return true;
 
@@ -100,17 +109,14 @@
         public bool TryErase(int index)
         {
 
-            if (index <= 0 || index >= _size)
+            if (index < 0 || index >= _size)
             {
                 return false;
             }
 
-            _array[index] = 0;
-
-            if (index == _size)
-            {
-                _size--;
-            }
+            Array.Copy(_array, index + 1, _array, index, _size - index - 1);
+            _size--;
+            _array[_size] = 0;
 
             return true;
 
@@ -132,10 +138,7 @@
 
         public void Clear()
         {
-            int[] ints = new int[BaseSize];
             _size = 0;
-
-            _array = ints;
         }
 
         public bool TryForceCapacity(int newCapacity)
@@ -147,10 +150,12 @@
             }
 
             int[] ints = new int[newCapacity];
-            _size = newCapacity;
-            Array.Copy(_array, ints, newCapacity);
+            int count = Math.Min(_size, newCapacity);
+
+            Array.Copy(_array, ints, count);
 
             _array = ints;
+            _size = count;
 
             return true;
         }
