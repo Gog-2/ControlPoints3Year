@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectBoxingUnboxing", "Obj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolymorphicTypeHierarchies", "PolymorphicTypeHierarchies\PolymorphicTypeHierarchies.csproj", "{688660BC-BCA6-4807-AED5-1C23D501B112}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerativePatterns", "GenerativePatterns\GenerativePatterns.csproj", "{B478BF43-358B-49C1-B340-D8BB4F390A47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{688660BC-BCA6-4807-AED5-1C23D501B112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{688660BC-BCA6-4807-AED5-1C23D501B112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{688660BC-BCA6-4807-AED5-1C23D501B112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B478BF43-358B-49C1-B340-D8BB4F390A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B478BF43-358B-49C1-B340-D8BB4F390A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B478BF43-358B-49C1-B340-D8BB4F390A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B478BF43-358B-49C1-B340-D8BB4F390A47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
