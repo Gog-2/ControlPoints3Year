@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolymorphicTypeHierarchies"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerativePatterns", "GenerativePatterns\GenerativePatterns.csproj", "{B478BF43-358B-49C1-B340-D8BB4F390A47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehavioralPatterns", "BehavioralPatterns\BehavioralPatterns.csproj", "{A1102449-4F37-4534-A904-5F2B1BC78019}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B478BF43-358B-49C1-B340-D8BB4F390A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B478BF43-358B-49C1-B340-D8BB4F390A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B478BF43-358B-49C1-B340-D8BB4F390A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1102449-4F37-4534-A904-5F2B1BC78019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1102449-4F37-4534-A904-5F2B1BC78019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1102449-4F37-4534-A904-5F2B1BC78019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1102449-4F37-4534-A904-5F2B1BC78019}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
