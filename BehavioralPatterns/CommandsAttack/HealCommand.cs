@@ -4,22 +4,32 @@ namespace BehavioralPatterns.CommandsAttack;
 
 public class HealCommand : IBattleCommand
 {
-    private AbstractUnit  _target;
-    private int _health;
+    private readonly AbstractUnit _target;
+    private readonly int _amount;
+    private bool _executed;
 
-    public void Init(AbstractUnit target, int health)
+    public HealCommand(AbstractUnit target, int amount)
     {
         _target = target;
-        _health = health;
+        _amount = amount;
     }
-    
+
+    public bool CanExecute() => !_target.IsDead;
+
     public void Execute()
     {
-        _target.TakeDamage(-_health);
+        if (_executed) return;
+
+        _target.Restore(_amount);
+        Console.WriteLine($"{_target.Name} вылечел на {_amount} HP! ({_target.Health} HP)");
+        _executed = true;
     }
 
     public void Undo()
     {
-        _target.TakeDamage(_health);
+        if (!_executed) return;
+
+        _target.TakeDamage(_amount);
+        _executed = false;
     }
 }
