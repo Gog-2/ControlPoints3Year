@@ -1,24 +1,25 @@
 namespace SmartHome;
 
-public class TV
+public class TV : BaseSmart
 {
-    private bool _isTurnedOn;
     private bool _programOn;
-    
-    public bool IsTurnedOn
-    {
-        get => _isTurnedOn;
-        private set  => _isTurnedOn = value;
-    }
     public bool IsProgramOn
     {
         get => _programOn;
         private set => _programOn = value;
     }
 
-    public void SwitchTV()
+    public override void Switch()
     {
         IsTurnedOn = !IsTurnedOn;
+        if (!IsTurnedOn)
+        {
+            IsProgramOn = false;
+        }
+    }
+    public override void Switch(bool isOn)
+    {
+        IsTurnedOn = isOn;
         if (!IsTurnedOn)
         {
             IsProgramOn = false;

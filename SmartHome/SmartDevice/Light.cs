@@ -2,17 +2,11 @@ using System.Drawing;
 
 namespace SmartHome;
 
-public class Light
+public class Light : BaseSmart
 {
-    private bool _isTurnedOn;
     private float _brightness;
     private Color _color;
-
-    public bool IsTurnedOn
-    {
-        get => _isTurnedOn;
-        private set => _isTurnedOn = value;
-    }
+    
 
     public float Brightness
     {
@@ -30,12 +24,7 @@ public class Light
     {
         _isTurnedOn = false;
     }
-
-    public void SwitchLight()
-    {
-        IsTurnedOn = !IsTurnedOn;
-    }
-
+    
     public void ChangeBrightness(float brightness)
     {
         Brightness = brightness;
