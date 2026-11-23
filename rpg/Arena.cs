@@ -5,13 +5,31 @@ using Charachter.Unit;
 public class Arena
 {
     private const int MaxRound = 15;
-    
+
     private const int MaxCrit = 80;
-    private const int CritStep = 5; 
+    private const int CritStep = 5;
     private const int HpStep = 20;
     private const int HealPercent = 30;
     private const int MaxHeals = 3;
     private const int ExpPerLevel = 50;
+
+    private const int MageHealth = 60;
+    private const int MagePower = 20;
+
+    private static readonly (string Label, Func<string, AbstractUnit> Create)[] HeroClasses =
+    {
+        ("Воин", n => new Warrior(n)),
+        ("Разбойник", n => new Rogue(n)),
+        ("Маг", n => new Mage(n, MageHealth, MagePower)),
+        ("Лучник", n => new Archer(n)),
+    };
+
+    private static readonly (string Label, Func<IWeapon> Create)[] WeaponChoices =
+    {
+        ("Меч", () => new Sword()),
+        ("Охотничий лук", () => new Bow()),
+        ("Посох тайных знаний", () => new Staff()),
+    };
 
     private AbstractUnit _hero;
     private int _maxHp;
@@ -30,7 +48,8 @@ public class Arena
         string name = (Console.ReadLine() ?? "").Trim();
         if (name.Length == 0) name = "Герой";
 
-        _hero = new Warrior(name) { Weapon = new Sword() };
+        _hero = ChooseHero(name);
+        _hero.Weapon = ChooseWeapon();
         _maxHp = _hero.Health;
         Console.WriteLine($"\n{_hero.Name} отправляется в путь. HP: {_hero.Health}/{_maxHp}, сила: {_hero.Power}, уровень: {_level}");
 
@@ -43,7 +62,7 @@ public class Arena
             if (!Fight(monster)) break;
 
             Reward(monster);
-            
+
             _turn++;
             if (_turn >= MaxRound) break;
         }
@@ -61,13 +80,41 @@ public class Arena
 
         Console.WriteLine($"\nИтог: ходов {_turn}, уровень {_level}, золото {_gold}");
     }
+
+    private static AbstractUnit ChooseHero(string name)
+    {
+        int idx = ReadChoice("Выберите класс:", HeroClasses.Select(c => c.Label).ToArray());
+        return HeroClasses[idx].Create(name);
+    }
+
+    private static IWeapon ChooseWeapon()
+    {
+        int idx = ReadChoice("Выберите оружие:", WeaponChoices.Select(w => w.Label).ToArray());
+        return WeaponChoices[idx].Create();
+    }
     
+    private static int ReadChoice(string title, string[] labels)
+    {
+        while (true)
+        {
+            Console.WriteLine(title);
+            for (int i = 0; i < labels.Length; i++)
+                Console.WriteLine($"  {i + 1}. {labels[i]}");
+            Console.Write("> ");
+
+            if (int.TryParse(Console.ReadLine(), out int idx) && idx >= 1 && idx <= labels.Length)
+                return idx - 1;
+
+            Console.WriteLine("Неверный ввод, повторите.");
+        }
+    }
+
     private bool Fight(Monster monster)
     {
         while (true)
         {
             var part = ChooseBodyPart();
-            
+
             var attack = Combat.Resolve(_hero.Power, part.HitChance, CritChance(part));
             int monsterHpBefore = monster.Health;
             if (attack.Hit)
@@ -86,7 +133,7 @@ public class Arena
                 Console.WriteLine($"{monster.Name} повержен!");
                 return true;
             }
-            
+
             var monsterPart = BodyParts.All[Random.Shared.Next(BodyParts.All.Length)];
             var counter = Combat.Resolve(monster.Power, monsterPart.HitChance, monsterPart.CritChance);
             int heroHpBefore = _hero.Health;
@@ -140,7 +187,7 @@ public class Arena
         Console.WriteLine($"Награда: +{monster.Gold} золота, +{exp} опыта. Золото: {_gold}, опыт: {_exp}/{ExpToNextLevel}");
 
         TryHeal();
-        
+
         while (_exp >= ExpToNextLevel)
         {
             _exp -= ExpToNextLevel;
